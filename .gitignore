@@ -8,4 +8,6 @@ build/
 .docs/
 *.egg
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 uv.lock
