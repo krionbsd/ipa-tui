@@ -119,4 +119,5 @@ class LoginScreen(Screen):
         self.app.ipa_client = client
         self.app.my_info = my_info
         from ipa_tui.screens.main import MainScreen
+
         self.app.switch_screen(MainScreen())

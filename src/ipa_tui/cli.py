@@ -182,11 +182,15 @@ def cmd_whoami(args):
 
 def cmd_login(args):
     config = IPAConfig(host=args.host, username=args.login)
-    password = args.password or getpass.getpass(f"Password for {config.username}@{config.host}: ")
+    password = args.password or getpass.getpass(
+        f"Password for {config.username}@{config.host}: "
+    )
     client = IPAClient(config)
     client.login(password)
     auth.keychain_set(config.username, password)
-    print(f"Logged in as {config.username}. Password saved to Keychain, session cached.")
+    print(
+        f"Logged in as {config.username}. Password saved to Keychain, session cached."
+    )
 
 
 def cmd_logout(args):
@@ -250,6 +254,7 @@ def cli_main():
 
     if args.command is None or args.command == "tui":
         from ipa_tui.app import main
+
         main()
         return
 

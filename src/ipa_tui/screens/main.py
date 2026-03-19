@@ -22,19 +22,36 @@ DETAIL_SKIP_KEYS = {"dn", "objectclass", "ipauniqueid"}
 
 LIST_COLUMNS = {
     "groups": {
-        "columns": [("Group Name", "cn"), ("GID", "gidnumber"), ("Description", "description")],
+        "columns": [
+            ("Group Name", "cn"),
+            ("GID", "gidnumber"),
+            ("Description", "description"),
+        ],
         "name_key": "cn",
     },
     "users": {
-        "columns": [("Login", "uid"), ("Full Name", "cn"), ("Email", "mail"), ("Status", "nsaccountlock")],
+        "columns": [
+            ("Login", "uid"),
+            ("Full Name", "cn"),
+            ("Email", "mail"),
+            ("Status", "nsaccountlock"),
+        ],
         "name_key": "uid",
     },
     "hbac_rules": {
-        "columns": [("Rule Name", "cn"), ("Status", "ipaenabledflag"), ("Description", "description")],
+        "columns": [
+            ("Rule Name", "cn"),
+            ("Status", "ipaenabledflag"),
+            ("Description", "description"),
+        ],
         "name_key": "cn",
     },
     "sudo_rules": {
-        "columns": [("Rule Name", "cn"), ("Status", "ipaenabledflag"), ("Description", "description")],
+        "columns": [
+            ("Rule Name", "cn"),
+            ("Status", "ipaenabledflag"),
+            ("Description", "description"),
+        ],
         "name_key": "cn",
     },
 }
@@ -407,5 +424,9 @@ class MainScreen(Screen):
             "sudo_rules": "Sudo Rules",
         }
         section_title = title_map.get(self._current_section, self._current_section)
-        suffix = f" (filtered: {count}/{len(self._current_data)})" if q else f" ({count} items)"
+        suffix = (
+            f" (filtered: {count}/{len(self._current_data)})"
+            if q
+            else f" ({count} items)"
+        )
         self.query_one("#section-title", Static).update(f" {section_title}{suffix}")

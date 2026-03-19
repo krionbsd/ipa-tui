@@ -48,11 +48,15 @@ def clear_session():
 def keychain_set(account: str, password: str):
     subprocess.run(
         [
-            "security", "add-generic-password",
+            "security",
+            "add-generic-password",
             "-U",
-            "-s", KEYCHAIN_SERVICE,
-            "-a", account,
-            "-w", password,
+            "-s",
+            KEYCHAIN_SERVICE,
+            "-a",
+            account,
+            "-w",
+            password,
         ],
         check=True,
         capture_output=True,
@@ -63,9 +67,12 @@ def keychain_get(account: str) -> str | None:
     try:
         result = subprocess.run(
             [
-                "security", "find-generic-password",
-                "-s", KEYCHAIN_SERVICE,
-                "-a", account,
+                "security",
+                "find-generic-password",
+                "-s",
+                KEYCHAIN_SERVICE,
+                "-a",
+                account,
                 "-w",
             ],
             check=True,
@@ -81,9 +88,12 @@ def keychain_delete(account: str):
     try:
         subprocess.run(
             [
-                "security", "delete-generic-password",
-                "-s", KEYCHAIN_SERVICE,
-                "-a", account,
+                "security",
+                "delete-generic-password",
+                "-s",
+                KEYCHAIN_SERVICE,
+                "-a",
+                account,
             ],
             capture_output=True,
         )

@@ -84,28 +84,36 @@ class IPAClient:
         return self._extract_dict(result)
 
     def list_groups(self, criteria: str = "") -> list[dict]:
-        result = self._call("group_find", a_criteria=criteria, o_sizelimit=0, o_all=False)
+        result = self._call(
+            "group_find", a_criteria=criteria, o_sizelimit=0, o_all=False
+        )
         return self._extract_list(result)
 
     def show_group(self, cn: str) -> dict:
         return self._extract_dict(self._call("group_show", a_cn=cn, o_all=True))
 
     def search_users(self, criteria: str) -> list[dict]:
-        result = self._call("user_find", a_criteria=criteria, o_sizelimit=50, o_all=False)
+        result = self._call(
+            "user_find", a_criteria=criteria, o_sizelimit=50, o_all=False
+        )
         return self._extract_list(result)
 
     def show_user(self, uid: str) -> dict:
         return self._extract_dict(self._call("user_show", a_uid=uid, o_all=True))
 
     def list_hbac_rules(self, criteria: str = "") -> list[dict]:
-        result = self._call("hbacrule_find", a_criteria=criteria, o_sizelimit=0, o_all=False)
+        result = self._call(
+            "hbacrule_find", a_criteria=criteria, o_sizelimit=0, o_all=False
+        )
         return self._extract_list(result)
 
     def show_hbac_rule(self, cn: str) -> dict:
         return self._extract_dict(self._call("hbacrule_show", a_cn=cn, o_all=True))
 
     def list_sudo_rules(self, criteria: str = "") -> list[dict]:
-        result = self._call("sudorule_find", a_criteria=criteria, o_sizelimit=0, o_all=False)
+        result = self._call(
+            "sudorule_find", a_criteria=criteria, o_sizelimit=0, o_all=False
+        )
         return self._extract_list(result)
 
     def show_sudo_rule(self, cn: str) -> dict:
