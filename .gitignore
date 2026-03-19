@@ -8,3 +8,4 @@ build/
 .docs/
 *.egg
 .pytest_cache/
+uv.lock
